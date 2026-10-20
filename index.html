@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اختبار مادة الأحياء - الانقسام الاختزالي (Meiosis)</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- الترويسة الرسمية -->
+    <header class="header">
+      <div class="gov-title">
+        <h3>جمهورية العراق</h3>
+        <h4>وزارة التربية – المديرية العامة للتربية</h4>
+      </div>
+      <h1>امتحان مادة الأحياء – السادس العلمي</h1>
+      <h2>الموضوع: الانقسام الاختزالي (Meiosis) - 50 سؤالاً اختيارياً</h2>
+      <p class="teacher-credit">إعداد وتصميم الأستاذ / د. صهيب موفق عزيز</p>
+    </header>
+
+    <!-- شاشة تسجيل بيانات الطالب والبدء -->
+    <div id="start-screen" class="card">
+      <h3 class="card-title">تعليمات الامتحان واستمارة التسجيل</h3>
+      <div class="info-box">
+        <p><strong>• طبيعة الاختبار:</strong> 50 سؤالاً اختيارياً من متعدد (كل سؤال بدرجتين).</p>
+        <p><strong>• مدة الامتحان:</strong> 30 دقيقة فقط (يتم التسليم تلقائياً عند انتهاء الوقت).</p>
+        <p><strong>• شروط الامتحان:</strong> لا يمكن إعادة الامتحان أو تحديث الصفحة حتى إنهاء المحاولة الحالية بالكامل.</p>
+      </div>
+
+      <form id="student-form" onsubmit="handleStartQuiz(event)">
+        <div class="form-group">
+          <label for="student-name">اسم الطالب الرباعي:</label>
+          <input type="text" id="student-name" class="input-field" placeholder="أدخل اسمك الكامل هنا..." required />
+        </div>
+        <div class="form-group">
+          <label for="student-section">الصف والشعبة:</label>
+          <input type="text" id="student-section" class="input-field" placeholder="مثال: السادس العلمي / أ" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">بدء الامتحان الآن</button>
+      </form>
+    </div>
+
+    <!-- شاشة الامتحان التفاعلي -->
+    <div id="quiz-screen" class="card hidden">
+      <div class="quiz-status-bar">
+        <div class="student-info-tag">
+          <span id="display-student-name"></span> (<span id="display-student-section"></span>)
+        </div>
+        <div class="timer-box" id="timer-box">
+          ⏱️ الوقت المتبقي: <span id="timer-display">30:00</span>
+        </div>
+      </div>
+
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <form id="quiz-form" onsubmit="handleFinalSubmit(event)">
+        <div id="questions-wrapper">
+          <!-- يتم توليد الأسئلة الاختيارية هنا ديناميكياً -->
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success btn-block" id="submit-btn">تسليم وإرسال الامتحان</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- شاشة النتيجة النهائية وعرض الأخطاء -->
+    <div id="result-screen" class="card hidden">
+      <div class="result-header">
+        <h2>نتيجة الامتحان النهائية</h2>
+        <div class="score-badge" id="score-badge">0 / 100</div>
+        <p class="result-message" id="result-message"></p>
+      </div>
+
+      <div class="student-report-details" id="student-report-details">
+        <!-- بيانات الطالب -->
+      </div>
+
+      <hr class="divider">
+
+      <h3 class="review-title">🔍 مراجعة الإجابات وتصحيح الأخطاء:</h3>
+      <div id="review-wrapper">
+        <!-- يتم توليد تقرير الأخطاء والإجابات النموذجية هنا -->
+      </div>
+
+      <div class="text-center margin-top-20">
+        <button onclick="resetExamApp()" class="btn btn-primary">إعادة الامتحان من جديد</button>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>منصة الاختبارات الإلكترونية © 2026 - إعداد الدكتور صهيب موفق عزيز</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
